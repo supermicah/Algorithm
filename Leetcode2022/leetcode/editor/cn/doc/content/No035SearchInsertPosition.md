@@ -41,7 +41,7 @@
 
 <div id="labuladong"><hr>
 
-**通知：[数据结构精品课 V1.8](https://aep.h5.xeknow.com/s/1XJHEO) 持续更新中；[第十期刷题打卡挑战](https://mp.weixin.qq.com/s/eUG2OOzY3k_ZTz-CFvtv5Q) 报名即将截止。**
+**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线。**
 
 <details><summary><strong>labuladong 思路</strong></summary>
 
@@ -64,6 +64,87 @@
 **标签：[二分搜索](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxODQxMDM0Mw==&action=getalbum&album_id=2120601117519675393)**
 
 ## 解法代码
+
+提示：🟢 标记的是我写的解法代码，🤖 标记的是 chatGPT 翻译的多语言解法代码。如有错误，可以 [点这里](https://github.com/labuladong/fucking-algorithm/issues/1113) 反馈和修正。
+
+<div class="tab-panel"><div class="tab-nav">
+<button data-tab-item="cpp" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">cpp🤖</button>
+
+<button data-tab-item="python" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">python🤖</button>
+
+<button data-tab-item="java" class="tab-nav-button btn active" data-tab-group="default" onclick="switchTab(this)">java🟢</button>
+
+<button data-tab-item="go" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">go🤖</button>
+
+<button data-tab-item="javascript" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">javascript🤖</button>
+</div><div class="tab-content">
+<div data-tab-item="cpp" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```cpp
+// 注意：cpp 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        return left_bound(nums, target);
+    }
+
+    // 搜索左侧边界的二分算法
+    int left_bound(vector<int>& nums, int target) {
+        if (nums.size() == 0) return -1;
+        int left = 0;
+        int right = nums.size(); // 注意
+
+        while (left < right) { // 注意
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                right = mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid; // 注意
+            }
+        }
+        return left;
+    }
+};
+```
+
+</div></div>
+
+<div data-tab-item="python" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```python
+# 注意：python 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+# 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        return self.left_bound(nums, target)
+
+    # 搜索左侧边界的二分算法
+    def left_bound(self, nums: List[int], target: int) -> int:
+        if not nums:
+            return -1
+        left = 0
+        right = len(nums)  # 注意
+
+        while left < right:  # 注意
+            mid = left + (right - left) // 2
+            if nums[mid] == target:
+                right = mid
+            elif nums[mid] < target:
+                left = mid + 1
+            elif nums[mid] > target:
+                right = mid  # 注意
+
+        return left
+```
+
+</div></div>
+
+<div data-tab-item="java" class="tab-item active" data-tab-group="default"><div class="highlight">
 
 ```java
 class Solution {
@@ -92,11 +173,93 @@ class Solution {
 }
 ```
 
+</div></div>
+
+<div data-tab-item="go" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```go
+// 注意：go 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+import "fmt"
+
+func searchInsert(nums []int, target int) int {
+    return leftBound(nums, target)
+}
+
+// leftBound is a binary search algorithm that searches for the left boundary
+func leftBound(nums []int, target int) int {
+    if len(nums) == 0 {
+        return -1
+    }
+    left, right := 0, len(nums) // 注意
+
+    for left < right { // 注意
+        mid := left + (right-left)/2
+        if nums[mid] == target {
+            right = mid
+        } else if nums[mid] < target {
+            left = mid + 1
+        } else if nums[mid] > target {
+            right = mid // 注意
+        }
+    }
+    return left
+}
+```
+
+</div></div>
+
+<div data-tab-item="javascript" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```javascript
+// 注意：javascript 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var searchInsert = function(nums, target) {
+    return left_bound(nums, target);
+};
+
+/**
+ * 搜索左侧边界的二分算法
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var left_bound = function(nums, target) {
+    if (nums.length == 0) return -1;
+    let left = 0;
+    let right = nums.length; // 注意
+
+    while (left < right) { // 注意
+        let mid = left + Math.floor((right - left) / 2);
+        if (nums[mid] == target) {
+            right = mid;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid; // 注意
+        }
+    }
+    return left;
+};
+```
+
+</div></div>
+</div></div>
+
 **类似题目**：
   - [剑指 Offer II 068. 查找插入位置 🟢](/problems/N6YdxV)
 
 </details>
 </div>
+
+
 
 
 

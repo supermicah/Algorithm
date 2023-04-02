@@ -38,11 +38,11 @@
 
 <div id="labuladong"><hr>
 
-**通知：[数据结构精品课 V1.8](https://aep.h5.xeknow.com/s/1XJHEO) 持续更新中；[第十期刷题打卡挑战](https://mp.weixin.qq.com/s/eUG2OOzY3k_ZTz-CFvtv5Q) 报名即将截止。**
+**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线。**
 
 
 
-<p><strong><a href="https://labuladong.github.io/article?qno=21" target="_blank">⭐️labuladong 题解</a></strong></p>
+<p><strong><a href="https://labuladong.github.io/article/slug.html?slug=merge-two-sorted-lists" target="_blank">⭐️labuladong 题解</a></strong></p>
 <details><summary><strong>labuladong 思路</strong></summary>
 
 ## 基本思路
@@ -51,7 +51,7 @@
 
 经典算法题了，[双指针技巧](https://labuladong.github.io/article/fname.html?fname=链表技巧) 用起来。
 
-![](https://labuladong.github.io/algo/images/链表技巧/1.gif)
+![](https://labuladong.github.io/pictures/链表技巧/1.gif)
 
 这个算法的逻辑类似于「拉拉链」，`l1, l2` 类似于拉链两侧的锯齿，指针 `p` 就好像拉链的拉索，将两个有序链表合并。
 
@@ -63,6 +63,100 @@
 
 ## 解法代码
 
+提示：🟢 标记的是我写的解法代码，🤖 标记的是 chatGPT 翻译的多语言解法代码。如有错误，可以 [点这里](https://github.com/labuladong/fucking-algorithm/issues/1113) 反馈和修正。
+
+<div class="tab-panel"><div class="tab-nav">
+<button data-tab-item="cpp" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">cpp🤖</button>
+
+<button data-tab-item="python" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">python🤖</button>
+
+<button data-tab-item="java" class="tab-nav-button btn active" data-tab-group="default" onclick="switchTab(this)">java🟢</button>
+
+<button data-tab-item="go" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">go🤖</button>
+
+<button data-tab-item="javascript" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">javascript🤖</button>
+</div><div class="tab-content">
+<div data-tab-item="cpp" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```cpp
+// 注意：cpp 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        // 虚拟头结点
+        ListNode* dummy = new ListNode(-1), *p = dummy;
+        ListNode* p1 = l1, *p2 = l2;
+
+        while (p1 != nullptr && p2 != nullptr) {/**<extend down -200>![](https://labuladong.github.io/pictures/链表技巧/1.gif) */
+            // 比较 p1 和 p2 两个指针
+            // 将值较小的的节点接到 p 指针
+            if (p1->val > p2->val) {
+                p->next = p2;
+                p2 = p2->next;
+            } else {
+                p->next = p1;
+                p1 = p1->next;
+            }
+            // p 指针不断前进
+            p = p->next;
+        }
+
+        if (p1 != nullptr) {
+            p->next = p1;
+        }
+
+        if (p2 != nullptr) {
+            p->next = p2;
+        }
+
+        return dummy->next;
+    }
+};
+```
+
+</div></div>
+
+<div data-tab-item="python" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```python
+# 注意：python 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+# 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        # 虚拟头结点
+        dummy = ListNode(-1)
+        p = dummy
+        p1 = l1
+        p2 = l2
+
+        while p1 and p2: # <extend down -200>![](https://labuladong.github.io/pictures/链表技巧/1.gif) #
+            # 比较 p1 和 p2 两个指针
+            # 将值较小的的节点接到 p 指针
+            if p1.val > p2.val:
+                p.next = p2
+                p2 = p2.next
+            else:
+                p.next = p1
+                p1 = p1.next
+            # p 指针不断前进
+            p = p.next
+
+        if p1:
+            p.next = p1
+
+        if p2:
+            p.next = p2
+
+        return dummy.next
+```
+
+</div></div>
+
+<div data-tab-item="java" class="tab-item active" data-tab-group="default"><div class="highlight">
+
 ```java
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -70,10 +164,7 @@ class Solution {
         ListNode dummy = new ListNode(-1), p = dummy;
         ListNode p1 = l1, p2 = l2;
 
-        while (p1 != null && p2 != null) {/**<extend down -200>
-
-![](https://labuladong.github.io/algo/images/链表技巧/1.gif)
-*/
+        while (p1 != null && p2 != null) {/**<extend down -200>![](https://labuladong.github.io/pictures/链表技巧/1.gif) */
             // 比较 p1 和 p2 两个指针
             // 将值较小的的节点接到 p 指针
             if (p1.val > p2.val) {
@@ -100,6 +191,101 @@ class Solution {
 }
 ```
 
+</div></div>
+
+<div data-tab-item="go" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```go
+// 注意：go 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+    // 虚拟头结点
+    dummy := &ListNode{-1, nil}
+    p := dummy
+    p1 := l1
+    p2 := l2
+
+    for p1 != nil && p2 != nil {/**<extend down -200>![](https://labuladong.github.io/pictures/链表技巧/1.gif) */
+        // 比较 p1 和 p2 两个指针
+        // 将值较小的的节点接到 p 指针
+        if p1.Val > p2.Val {
+            p.Next = p2
+            p2 = p2.Next
+        } else {
+            p.Next = p1
+            p1 = p1.Next
+        }
+        // p 指针不断前进
+        p = p.Next
+    }
+
+    if p1 != nil {
+        p.Next = p1
+    }
+
+    if p2 != nil {
+        p.Next = p2
+    }
+
+    return dummy.Next
+}
+```
+
+</div></div>
+
+<div data-tab-item="javascript" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```javascript
+// 注意：javascript 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var mergeTwoLists = function(l1, l2) {
+    // 虚拟头结点
+    var dummy = new ListNode(-1), p = dummy;
+    var p1 = l1, p2 = l2;
+
+    while (p1 !== null && p2 !== null) {/**<extend down -200>![](https://labuladong.github.io/pictures/链表技巧/1.gif) */
+        // 比较 p1 和 p2 两个指针
+        // 将值较小的的节点接到 p 指针
+        if (p1.val > p2.val) {
+            p.next = p2;
+            p2 = p2.next;
+        } else {
+            p.next = p1;
+            p1 = p1.next;
+        }
+        // p 指针不断前进
+        p = p.next;
+    }
+
+    if (p1 !== null) {
+        p.next = p1;
+    }
+
+    if (p2 !== null) {
+        p.next = p2;
+    }
+
+    return dummy.next;
+};
+```
+
+</div></div>
+</div></div>
+
 **类似题目**：
   - [1305. 两棵二叉搜索树中的所有元素 🟠](/problems/all-elements-in-two-binary-search-trees)
   - [141. 环形链表 🟢](/problems/linked-list-cycle)
@@ -116,6 +302,7 @@ class Solution {
   - [977. 有序数组的平方 🟢](/problems/squares-of-a-sorted-array)
   - [剑指 Offer 22. 链表中倒数第k个节点 🟢](/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof)
   - [剑指 Offer 25. 合并两个排序的链表 🟢](/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof)
+  - [剑指 Offer 49. 丑数 🟠](/problems/chou-shu-lcof)
   - [剑指 Offer 52. 两个链表的第一个公共节点 🟢](/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof)
   - [剑指 Offer II 021. 删除链表的倒数第 n 个结点 🟠](/problems/SLwz0R)
   - [剑指 Offer II 022. 链表中环的入口节点 🟠](/problems/c32eOV)
@@ -124,6 +311,8 @@ class Solution {
 
 </details>
 </div>
+
+
 
 
 

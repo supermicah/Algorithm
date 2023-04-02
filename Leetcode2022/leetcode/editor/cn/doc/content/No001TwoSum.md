@@ -46,11 +46,11 @@
 
 <div id="labuladong"><hr>
 
-**通知：[数据结构精品课 V1.8](https://aep.h5.xeknow.com/s/1XJHEO) 持续更新中；[第十期刷题打卡挑战](https://mp.weixin.qq.com/s/eUG2OOzY3k_ZTz-CFvtv5Q) 报名即将截止。**
+**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线。**
 
 
 
-<p><strong><a href="https://labuladong.github.io/article?qno=1" target="_blank">⭐️labuladong 题解</a></strong></p>
+<p><strong><a href="https://labuladong.github.io/article/slug.html?slug=two-sum" target="_blank">⭐️labuladong 题解</a></strong></p>
 <details><summary><strong>labuladong 思路</strong></summary>
 
 ## 基本思路
@@ -77,6 +77,70 @@
 
 ## 解法代码
 
+提示：🟢 标记的是我写的解法代码，🤖 标记的是 chatGPT 翻译的多语言解法代码。如有错误，可以 [点这里](https://github.com/labuladong/fucking-algorithm/issues/1113) 反馈和修正。
+
+<div class="tab-panel"><div class="tab-nav">
+<button data-tab-item="cpp" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">cpp🤖</button>
+
+<button data-tab-item="python" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">python🤖</button>
+
+<button data-tab-item="java" class="tab-nav-button btn active" data-tab-group="default" onclick="switchTab(this)">java🟢</button>
+
+<button data-tab-item="go" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">go🤖</button>
+
+<button data-tab-item="javascript" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">javascript🤖</button>
+</div><div class="tab-content">
+<div data-tab-item="cpp" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```cpp
+// 注意：cpp 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的全部测试用例，可直接粘贴提交。
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        // 维护 val -> index 的映射
+        unordered_map<int, int> valToIndex;
+        for (int i = 0; i < nums.size(); i++) {
+            // 查表，看看是否有能和 nums[i] 凑出 target 的元素
+            int need = target - nums[i];
+            if (valToIndex.count(need)) {
+                return vector<int>{valToIndex[need], i};
+            }
+            // 存入 val -> index 的映射
+            valToIndex[nums[i]] = i;
+        }
+        return vector<int>{};
+    }
+};
+```
+
+</div></div>
+
+<div data-tab-item="python" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```python
+# 注意：python 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+# 本代码已经通过力扣的全部测试用例，可直接粘贴提交。
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # 维护 val -> index 的映射
+        valToIndex = {}
+        for i in range(len(nums)):
+            # 查表，看看是否有能和 nums[i] 凑出 target 的元素
+            need = target - nums[i]
+            if need in valToIndex:
+                return [valToIndex[need], i]
+            # 存入 val -> index 的映射
+            valToIndex[nums[i]] = i
+        return []
+```
+
+</div></div>
+
+<div data-tab-item="java" class="tab-item active" data-tab-group="default"><div class="highlight">
+
 ```java
 class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -96,15 +160,70 @@ class Solution {
 }
 ```
 
+</div></div>
+
+<div data-tab-item="go" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```go
+// 注意：go 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的全部测试用例，可直接粘贴提交。
+
+func twoSum(nums []int, target int) []int {
+    // 维护 val -> index 的映射
+    valToIndex := make(map[int]int)
+
+    for i, num := range nums {
+        // 查表，看看是否有能和 nums[i] 凑出 target 的元素
+        need := target - num
+        if valToIndex[need] != 0 {
+            return []int{valToIndex[need] - 1, i}
+        }
+        // 存入 val -> index 的映射
+        valToIndex[num] = i + 1
+    }
+
+    return nil
+}
+```
+
+</div></div>
+
+<div data-tab-item="javascript" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```javascript
+// 注意：javascript 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的全部测试用例，可直接粘贴提交。
+
+var twoSum = function(nums, target) {
+    // 维护 val -> index 的映射
+    var valToIndex = new Map();
+    for (var i = 0; i < nums.length; i++) {
+        // 查表，看看是否有能和 nums[i] 凑出 target 的元素
+        var need = target - nums[i];
+        if (valToIndex.has(need)) {
+            return [valToIndex.get(need), i];
+        }
+        // 存入 val -> index 的映射
+        valToIndex.set(nums[i], i);
+    }
+    return null;
+};
+```
+
+</div></div>
+</div></div>
+
 **类似题目**：
   - [15. 三数之和 🟠](/problems/3sum)
-  - [167. 两数之和 II - 输入有序数组 🟢](/problems/two-sum-ii-input-array-is-sorted)
+  - [167. 两数之和 II - 输入有序数组 🟠](/problems/two-sum-ii-input-array-is-sorted)
   - [18. 四数之和 🟠](/problems/4sum)
   - [剑指 Offer 57. 和为s的两个数字 🟢](/problems/he-wei-sde-liang-ge-shu-zi-lcof)
   - [剑指 Offer II 007. 数组中和为 0 的三个数 🟠](/problems/1fGaJU)
 
 </details>
 </div>
+
+
 
 
 

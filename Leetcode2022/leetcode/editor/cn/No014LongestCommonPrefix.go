@@ -69,6 +69,6 @@ func longestCommonPrefix(strs []string) string {
 //leetcode submit region end(Prohibit modification and deletion)
 
 func main() {
-	value := longestCommonPrefix([]string{"a"})
+	value := longestCommonPrefix([]string{"flower", "flow", "flight"})
 	fmt.Println(fmt.Sprintf("%+v", value))
 }

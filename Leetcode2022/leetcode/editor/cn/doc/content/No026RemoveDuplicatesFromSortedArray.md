@@ -56,30 +56,97 @@ for (int i = 0; i &lt; k; i++) {
 
 <div id="labuladong"><hr>
 
-**通知：[数据结构精品课 V1.8](https://aep.h5.xeknow.com/s/1XJHEO) 持续更新中；[第十期刷题打卡挑战](https://mp.weixin.qq.com/s/eUG2OOzY3k_ZTz-CFvtv5Q) 报名即将截止。**
+**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线。**
 
 
 
-<p><strong><a href="https://labuladong.github.io/article?qno=26" target="_blank">⭐️labuladong 题解</a></strong></p>
+<p><strong><a href="https://labuladong.github.io/article/slug.html?slug=remove-duplicates-from-sorted-array" target="_blank">⭐️labuladong 题解</a></strong></p>
 <details><summary><strong>labuladong 思路</strong></summary>
 
 ## 基本思路
 
 > 本文有视频版：[数组双指针技巧汇总](https://www.bilibili.com/video/BV1iG411W7Wm)
 
-PS：这道题在[《算法小抄》](https://mp.weixin.qq.com/s/tUSovvogbR9StkPWb75fUw) 的第 371 页。
+PS：这道题在[《算法小抄》](https://item.jd.com/12759911.html) 的第 371 页。
 
 有序序列去重的通用解法就是我们前文 [双指针技巧](https://labuladong.github.io/article/fname.html?fname=双指针技巧) 中的快慢指针技巧。
 
 我们让慢指针 `slow` 走在后面，快指针 `fast` 走在前面探路，找到一个不重复的元素就告诉 `slow` 并让 `slow` 前进一步。这样当 `fast` 指针遍历完整个数组 `nums` 后，**`nums[0..slow]` 就是不重复元素**。
 
-![](https://labuladong.github.io/algo/images/数组去重/1.gif)
+![](https://labuladong.github.io/pictures/数组去重/1.gif)
 
 **详细题解：[双指针技巧秒杀七道数组题目](https://labuladong.github.io/article/fname.html?fname=双指针技巧)**
 
 **标签：[数组](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxODQxMDM0Mw==&action=getalbum&album_id=2120601117519675393)，[数组双指针](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxODQxMDM0Mw==&action=getalbum&album_id=2120601117519675393)**
 
 ## 解法代码
+
+提示：🟢 标记的是我写的解法代码，🤖 标记的是 chatGPT 翻译的多语言解法代码。如有错误，可以 [点这里](https://github.com/labuladong/fucking-algorithm/issues/1113) 反馈和修正。
+
+<div class="tab-panel"><div class="tab-nav">
+<button data-tab-item="cpp" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">cpp🤖</button>
+
+<button data-tab-item="python" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">python🤖</button>
+
+<button data-tab-item="java" class="tab-nav-button btn active" data-tab-group="default" onclick="switchTab(this)">java🟢</button>
+
+<button data-tab-item="go" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">go🤖</button>
+
+<button data-tab-item="javascript" class="tab-nav-button btn " data-tab-group="default" onclick="switchTab(this)">javascript🤖</button>
+</div><div class="tab-content">
+<div data-tab-item="cpp" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```cpp
+// 注意：cpp 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if (nums.size() == 0) {
+            return 0;
+        }
+        int slow = 0, fast = 0;
+        while (fast < nums.size()) {
+            if (nums[fast] != nums[slow]) {
+                slow++;
+                // 维护 nums[0..slow] 无重复
+                nums[slow] = nums[fast];
+            }
+            fast++;
+        }
+        // 数组长度为索引 + 1
+        return slow + 1;
+    }
+};
+```
+
+</div></div>
+
+<div data-tab-item="python" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```python
+# 注意：python 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+# 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if len(nums) == 0:
+            return 0
+        slow, fast = 0, 0
+        while fast < len(nums):
+            if nums[fast] != nums[slow]:
+                slow += 1
+                # 维护 nums[0..slow] 无重复
+                nums[slow] = nums[fast]
+            fast += 1
+        # 数组长度为索引 + 1
+        return slow + 1
+```
+
+</div></div>
+
+<div data-tab-item="java" class="tab-item active" data-tab-group="default"><div class="highlight">
 
 ```java
 class Solution {
@@ -102,8 +169,73 @@ class Solution {
 }
 ```
 
+</div></div>
+
+<div data-tab-item="go" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```go
+// 注意：go 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+func removeDuplicates(nums []int) int {
+    // 如果数组为空，直接返回 0
+    if len(nums) == 0 {
+        return 0
+    }
+    // 定义快慢指针，初始化都指向数组头部
+    slow, fast := 0, 0
+    // 快指针向后遍历数组，直到末尾
+    for fast < len(nums) {
+        // 如果两个指针指向的元素不相同
+        if nums[fast] != nums[slow] {
+            // 慢指针向后移动，并且将慢指针位置上的值设为快指针位置上的值
+            slow++
+            nums[slow] = nums[fast]
+        }
+        // 快指针继续向后移动
+        fast++
+    }
+    // slow 指向数组的最后一个不重复元素的位置
+    // 数组长度为索引 + 1
+    return slow + 1
+}
+```
+
+</div></div>
+
+<div data-tab-item="javascript" class="tab-item " data-tab-group="default"><div class="highlight">
+
+```javascript
+// 注意：javascript 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
+// 本代码已经通过力扣的测试用例，应该可直接成功提交。
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+    if (nums.length === 0) {
+        return 0;
+    }
+    let slow = 0, fast = 0;
+    while (fast < nums.length) {
+        if (nums[fast] !== nums[slow]) {
+            slow++;
+            // 维护 nums[0..slow] 无重复
+            nums[slow] = nums[fast];
+        }
+        fast++;
+    }
+    // 数组长度为索引 + 1
+    return slow + 1;
+};
+```
+
+</div></div>
+</div></div>
+
 **类似题目**：
-  - [167. 两数之和 II - 输入有序数组 🟢](/problems/two-sum-ii-input-array-is-sorted)
+  - [167. 两数之和 II - 输入有序数组 🟠](/problems/two-sum-ii-input-array-is-sorted)
   - [27. 移除元素 🟢](/problems/remove-element)
   - [283. 移动零 🟢](/problems/move-zeroes)
   - [344. 反转字符串 🟢](/problems/reverse-string)
@@ -115,6 +247,8 @@ class Solution {
 
 </details>
 </div>
+
+
 
 
 
