@@ -74,7 +74,6 @@ func lengthOfLastWord(s string) int {
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
-
 func main() {
 	value := lengthOfLastWord("help   ")
 	fmt.Println(fmt.Sprintf("%+v", value))
