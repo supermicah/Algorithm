@@ -107,7 +107,7 @@ var values = []struct {
 
 func intToRoman(num int) string {
 
-	roman := []byte{}
+	var roman []byte
 	for _, vs := range values {
 		for num >= vs.value {
 			num -= vs.value
