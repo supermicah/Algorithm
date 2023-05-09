@@ -48,13 +48,27 @@ import "fmt"
 //
 
 //leetcode submit region begin(Prohibit modification and deletion)
+var m = make(map[int]int)
+
 func numWays(n int) int {
-	return 0
+	if n <= 0 {
+		return 1
+	}
+	if n <= 2 {
+		return n
+	}
+	if v, ok := m[n]; ok {
+		return v
+	}
+
+	way := (numWays(n-1) + numWays(n-2)) % 1000000007
+	m[n] = way
+	return way
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
 
 func main() {
-	value := 1
+	value := numWays(7)
 	fmt.Println(fmt.Sprintf("%+v", value))
 }
