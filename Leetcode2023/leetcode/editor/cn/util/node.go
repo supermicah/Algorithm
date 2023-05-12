@@ -16,3 +16,9 @@ func toNode(node []int) *ListNode {
 
 	return n
 }
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}

@@ -4,7 +4,7 @@ import "fmt"
 
 /***
 *
-* 2023-05-05 11:41:45
+* 2023-05-06 10:44:36
 *
 ***/
 
@@ -47,13 +47,13 @@ import "fmt"
 //
 // Related Topics数组 | 双指针 | 排序
 //
-// 👍 1584, 👎 0bug 反馈 | 使用指南 | 更多配套插件
+// 👍 1585, 👎 0bug 反馈 | 使用指南 | 更多配套插件
 //
 //
 //
 //
 
-// leetcode submit region begin(Prohibit modification and deletion)
+//leetcode submit region begin(Prohibit modification and deletion)
 func fourSum(nums []int, target int) [][]int {
 	return nil
 }

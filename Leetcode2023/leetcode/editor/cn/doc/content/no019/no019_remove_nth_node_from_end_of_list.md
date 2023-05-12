@@ -287,6 +287,8 @@ var findFromEnd = function(head, k) {
 </div></div>
 </div></div>
 
+<visual slug='remove-nth-node-from-end-of-list'/>
+
 **类似题目**：
   - [141. 环形链表 🟢](/problems/linked-list-cycle)
   - [142. 环形链表 II 🟠](/problems/linked-list-cycle-ii)
