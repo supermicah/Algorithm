@@ -40,14 +40,44 @@ import "fmt"
 //
 //
 
-//leetcode submit region begin(Prohibit modification and deletion)
+// leetcode submit region begin(Prohibit modification and deletion)
 func cuttingRope(n int) int {
-	return 0
+	if n <= 2 {
+		return 1
+	}
+	dp := make([]int, n+1)
+	for i := 2; i <= n; i++ {
+		current := 0
+		for j := 1; j < i; j++ {
+			m := max(j*(i-j), dp[j]*(i-j))
+			current = max(m, current)
+		}
+		dp[i] = current
+	}
+	return dp[n]
+
+	//dp := make([]int, n+1)
+	//for i := 2; i <= n; i++ {
+	//	current := 0
+	//	for j := 1; j <= i; j++ {
+	//		m := max((i-j)*j, dp[i-j]*(j))
+	//		current = max(current, m)
+	//	}
+	//	dp[i] = current
+	//}
+	//return dp[n]
+}
+
+func max(i, j int) int {
+	if i < j {
+		return j
+	}
+	return i
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
 
 func main() {
-	value := 1
+	value := cuttingRope(10)
 	fmt.Println(fmt.Sprintf("%+v", value))
 }
