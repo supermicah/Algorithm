@@ -17,6 +17,15 @@ func toNode(node []int) *ListNode {
 	return n
 }
 
+func toSlice(node *ListNode) []int {
+	s := make([]int, 0)
+	for node != nil {
+		s = append(s, node.Val)
+		node = node.Next
+	}
+	return s
+}
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
