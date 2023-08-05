@@ -39,7 +39,7 @@
 
 <div id="labuladong"><hr>
 
-**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1，[手把手刷二叉树系列课程](https://aep.xet.tech/s/3YGcq3) 上线。**
+**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 和 [递归算法专题课](https://aep.xet.tech/s/3YGcq3) 限时附赠网站会员！**
 
 
 
@@ -287,7 +287,9 @@ var mergeTwoLists = function(l1, l2) {
 </div></div>
 </div></div>
 
-<visual slug='merge-two-sorted-lists'/>
+<details open><summary><strong>👾👾 算法可视化 👾👾</strong></summary><div id="data_merge-two-sorted-lists" data="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"></div><div class="resizable aspect-ratio-container" style="height: 100%;">
+<div id="iframe_merge-two-sorted-lists"></div></div>
+</details><hr /><br />
 
 **类似题目**：
   - [1305. 两棵二叉搜索树中的所有元素 🟠](/problems/all-elements-in-two-binary-search-trees)
@@ -314,6 +316,8 @@ var mergeTwoLists = function(l1, l2) {
 
 </details>
 </div>
+
+
 
 
 

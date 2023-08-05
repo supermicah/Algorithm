@@ -1,0 +1,26 @@
+class Solution {
+public void merge(int[] nums1, int m, int[] nums2, int n) {
+if(n==0){
+return ;
+}
+int index1=m-1;//有效数的索引
+int index2=n-1;
+int indexTotal=m+n-1;
+while(index2>=0){
+if(index1<0){//num1有效数已耗尽而num2还有
+nums1[indexTotal--]=nums2[index2--];
+}
+else if(index2<0){//num2有效数已耗尽,而num1还有
+nums1[indexTotal--]=nums1[index1--];
+}
+else if(nums1[index1]>nums2[index2]){
+nums1[indexTotal--]=nums1[index1--];
+}
+else{
+nums1[indexTotal--]=nums2[index2--];
+}
+
+        }
+    }
+
+}
