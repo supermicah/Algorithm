@@ -1,0 +1,132 @@
+## 视频讲解
+
+请看 [【基础算法精讲 06】](https://www.bilibili.com/video/BV1sd4y1x7KN/)，制作不易，欢迎点赞！
+
+* [sol1-Python3]
+
+```py
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        p0 = dummy = ListNode(next=head)
+        for _ in range(left - 1):
+            p0 = p0.next
+
+        pre = None
+        cur = p0.next
+        for _ in range(right - left + 1):
+            nxt = cur.next
+            cur.next = pre  # 每次循环只修改一个 next，方便大家理解
+            pre = cur
+            cur = nxt
+
+        # 见视频
+        p0.next.next = cur
+        p0.next = pre
+        return dummy.next
+```
+
+* [sol1-Java]
+
+```java
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        ListNode dummy = new ListNode(0, head), p0 = dummy;
+        for (int i = 0; i < left - 1; ++i)
+            p0 = p0.next;
+
+        ListNode pre = null, cur = p0.next;
+        for (int i = 0; i < right - left + 1; ++i) {
+            ListNode nxt = cur.next;
+            cur.next = pre; // 每次循环只修改一个 next，方便大家理解
+            pre = cur;
+            cur = nxt;
+        }
+
+        // 见视频
+        p0.next.next = cur;
+        p0.next = pre;
+        return dummy.next;
+    }
+}
+```
+
+* [sol1-C++]
+
+```cpp
+class Solution {
+public:
+    ListNode *reverseBetween(ListNode *head, int left, int right) {
+        ListNode *dummy = new ListNode(0, head), *p0 = dummy;
+        for (int i = 0; i < left - 1; ++i)
+            p0 = p0->next;
+
+        ListNode *pre = nullptr, *cur = p0->next;
+        for (int i = 0; i < right - left + 1; ++i) {
+            ListNode *nxt = cur->next;
+            cur->next = pre; // 每次循环只修改一个 next，方便大家理解
+            pre = cur;
+            cur = nxt;
+        }
+
+        // 见视频
+        p0->next->next = cur;
+        p0->next = pre;
+        return dummy->next;
+    }
+};
+```
+
+* [sol1-Go]
+
+```go
+func reverseBetween(head *ListNode, left int, right int) *ListNode {
+    dummy := &ListNode{Next: head}
+    p0 := dummy
+    for i := 0; i < left-1; i++ {
+        p0 = p0.Next
+    }
+
+    var pre, cur *ListNode = nil, p0.Next
+    for i := 0; i < right-left+1; i++ {
+        nxt := cur.Next
+        cur.Next = pre // 每次循环只修改一个 Next，方便大家理解
+        pre = cur
+        cur = nxt
+    }
+
+    // 见视频
+    p0.Next.Next = cur
+    p0.Next = pre
+    return dummy.Next
+}
+```
+
+* [sol1-JavaScript]
+
+```js
+var reverseBetween = function (head, left, right) {
+    let dummy = new ListNode(0, head);
+    let p0 = dummy;
+    for (let i = 0; i < left - 1; i++)
+        p0 = p0.next;
+
+    let pre = null, cur = p0.next;
+    for (let i = 0; i < right - left + 1; i++) {
+        const nxt = cur.next;
+        cur.next = pre; // 每次循环只修改一个 next，方便大家理解
+        pre = cur;
+        cur = nxt;
+    }
+
+    // 见视频
+    p0.next.next = cur;
+    p0.next = pre;
+    return dummy.next;
+};
+```
+
+#### 复杂度分析
+
+- 时间复杂度：$\mathcal{O}(n)$，其中 $n$ 为链表节点个数。
+- 空间复杂度：$\mathcal{O}(1)$，仅用到若干额外变量。
+
