@@ -65,6 +65,16 @@ import "fmt"
  * }
  */
 func reverseKGroup(head *ListNode, k int) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	return nil
+}
+
+func reverse(start, end *ListNode) *ListNode {
+	for start != end {
+
+	}
 	return nil
 }
 
