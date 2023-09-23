@@ -1,0 +1,130 @@
+思路和心得：
+
+# （一）排序(贪心)
+
+1.种植的总时间是固定的，种不完，花儿也不会生长；
+2.所以要尽量让“露出的尾巴”短。
+
+* []
+
+```python
+class Solution:
+    def earliestFullBloom(self, plantTime: List[int], growTime: List[int]) -> int:
+        n = len(plantTime)
+
+        ids = [i for i in range(n)]
+        ids.sort(key = lambda i : -growTime[i])
+        
+        res = 0
+        pt = -1
+        for i in ids:
+            pt += plantTime[i]
+            gt = pt + growTime[i]
+            res = max(res, gt + 1)
+        return res
+        
+        
+```
+
+* []
+
+```c++
+class Solution 
+{
+public:
+    int earliestFullBloom(vector<int>& plantTime, vector<int>& growTime) 
+    {
+        int n = (int)plantTime.size();
+        
+        vector<int> ids(n);
+        for (int i = 0; i < n; i ++)
+        {
+            ids[i] = i;
+        }
+        sort(ids.begin(),ids.end(), [&](int & i, int & j )
+             {
+                 return growTime[i] > growTime[j];
+             });
+        
+        int res = 0;
+        int pt = -1;
+        for (int i : ids)
+        {
+            pt += plantTime[i];
+            int gt = pt + growTime[i] + 1;
+            res = max(res, gt);
+        }
+        
+        return res;
+    }
+};
+```
+
+* []
+
+```java
+class Solution 
+{
+    public int earliestFullBloom(int[] plantTime, int[] growTime) 
+    {
+        int n = plantTime.length;
+        
+        List<Integer> ids = new ArrayList<>();
+        for (int i = 0; i < n; i ++)
+        {
+            ids.add(i);
+        }
+        
+        Collections.sort(ids, new Comparator<Integer>(){
+            @Override
+            public int compare(Integer i, Integer j)
+            {
+                return growTime[j] - growTime[i]; 
+            }
+        });
+        
+        int res = 0;
+        int pt = -1;
+        for (int i : ids)
+        {
+            pt += plantTime[i];
+            int gt = pt + growTime[i] + 1;
+            res = Math.max(res, gt);
+        }
+        
+        return res;
+    }
+}
+```
+
+* []
+
+```go
+func earliestFullBloom(plantTime []int, growTime []int) int {
+    var n int = len(plantTime)
+
+    var ids []int = make([]int, n)
+    for i := 0; i < n; i ++ {
+        ids[i] = i
+    }
+    sort.Slice(ids, func (i int, j int) bool {return growTime[ids[i]] > growTime[ids[j]]})
+
+    var pt int = -1
+    var res int = 0
+    for _, i := range ids {
+        pt += plantTime[i]
+        var gt int = pt + growTime[i] + 1
+        res = max(res, gt)
+    }
+    return res
+}
+
+
+func max(a int, b int) (int) {
+    if a > b {
+        return a
+    }
+    return b
+}
+```
+
