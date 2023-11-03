@@ -82,7 +82,32 @@ import "fmt"
  * }
  */
 func deleteNode(root *TreeNode, key int) *TreeNode {
-	return nil
+	if root == nil {
+		return nil
+	} else if root.Val < key {
+		root.Right = deleteNode(root.Right, key)
+	} else if root.Val > key {
+		root.Left = deleteNode(root.Left, key)
+	} else if root.Left == nil || root.Right == nil { // 这之下都是相等的情况
+		if root.Left != nil {
+			return root.Left
+		}
+		return root.Right
+	} else {
+		// 步骤：取出右边最小的值放入当前节点，并删除最小的值
+		// 1. 取出右边最小的值
+		successor := root.Right
+		for successor.Left != nil {
+			successor = successor.Left
+		}
+		// 2. 把右边删除最小值的放入右边
+		successor.Right = deleteNode(root.Right, successor.Val)
+		// 3. 把左边放到左边
+		successor.Left = root.Left
+		// 4. 整颗树删除节点后，该节点变为下面这个
+		return successor
+	}
+	return root
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
